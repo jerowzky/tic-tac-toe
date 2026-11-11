@@ -1,65 +1,85 @@
 # Tic-Tac-Toe
 
-A polished two-player Tic-Tac-Toe game built with **Next.js (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS v4** and **shadcn/ui-style components** (Radix primitives + `class-variance-authority`), with **Lucide** icons. No backend or database.
+A two-player Tic-Tac-Toe game with a 3×3 board, cloud and sunshine characters, a scoreboard, and customizable player names. Built with **Next.js (App Router), React 19, TypeScript, Tailwind CSS v4**, and shadcn/ui-style components using Radix primitives. Includes Lucide icons and does not require a backend or database.
+
+<p align="center">
+  <img src="public/screenshots/game-1.png" width="49%" />
+  <img src="public/screenshots/game-2.png" width="49%" />
+  <img src="public/screenshots/game-3.png" width="49%" />
+  <img src="public/screenshots/game-4.png" width="49%" />
+</p>
 
 ## Features
 
-- 3×3 board with friendly cloud and sunshine characters; the cloud goes first
-- Occupied cells are rejected and moves are blocked after the game ends
-- All 8 winning lines detected; the 3 winning cells are highlighted and pulse; draws detected
-- Scoreboard with cloud wins, sunshine wins and draws; the active player's card is highlighted
-- Editable player names (defaults: "Cloud" / "Sunshine"), reflected in the status message
-- **New Game** keeps scores; **Reset Score** asks for confirmation, then clears scores and the board
-- Dark theme by default with a light-theme toggle (saved in `localStorage`, no flash on load)
-- Responsive layout, keyboard support (Tab, arrow keys between cells, Enter/Space), ARIA labels and a live status region, `prefers-reduced-motion` respected
+- **Game Board:** A 3×3 grid with cloud and sunshine characters. Cloud takes the first turn.
+- **Game Rules:** Prevents players from selecting occupied cells or making moves after a round ends.
+- **Win Detection:** Checks all eight possible winning combinations, highlights the winning cells with a pulse animation, and detects draws.
+- **Scoreboard:** Tracks wins for both players and the number of draws. Highlights the player whose turn it is.
+- **Player Names:** Allows players to change their names from the default Cloud and Sunshine. Updated names also appear in game status messages.
+- **Game Controls:** New Game starts another round without clearing the scores. Reset Score asks for confirmation before clearing the scores and board.
+- **Theme Toggle:** Starts in dark mode and allows switching to light mode. The selected theme is saved in `localStorage`.
+- **Accessibility and Responsive Design:** Supports different screen sizes, keyboard navigation using Tab and arrow keys, Enter and Space controls, ARIA labels, live status announcements, and reduced-motion preferences.
 
-## Run locally
+## Run Locally
 
 Requires Node.js 20.9 or newer.
 
-```bash
+\`\`\`bash
 npm install
-npm run dev        # http://localhost:3000
-```
+npm run dev
+\`\`\`
 
-Other scripts:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-```bash
-npm run build      # production build
-npm start          # serve the production build
-npm run lint       # ESLint
-npm run typecheck  # tsc --noEmit
-npm test           # game-logic tests (node:test, 22 cases)
-```
+### Available Scripts
 
-## Project structure
+\`\`\`bash
+npm run build       # Build for production
+npm start           # Start the production server
+npm run lint        # Run ESLint
+npm run typecheck   # Check TypeScript types
+npm test            # Run game logic tests (22 cases)
+\`\`\`
 
-```
+## Project Structure
+
+\`\`\`text
 src/
-  app/            layout, page, global styles, icon
-  components/     Header, Game, GameBoard, GameCell, ScoreBoard, PlayerCard,
-                  GameStatus, GameControls, GameInstructions, Footer, ThemeToggle
-    ui/           button, card, input, label, alert-dialog (shadcn/ui style)
-  hooks/use-game  useReducer wrapper around the game reducer
-  lib/game.ts     pure game logic and types (no React)
-tests/            logic tests
-```
+├── app/              # Layout, page, global styles, icon
+├── components/       # Header, Game, GameBoard, GameCell,
+│                     # ScoreBoard, PlayerCard, GameStatus,
+│                     # GameControls, GameInstructions,
+│                     # Footer, ThemeToggle
+│   └── ui/           # Button, card, input, label, alert-dialog
+├── hooks/
+│   └── use-game      # useReducer wrapper for game state
+└── lib/
+    └── game.ts       # Game logic and types
+tests/                # Game logic tests
+\`\`\`
 
-Game rules live entirely in `src/lib/game.ts` as a pure reducer, so the UI only dispatches actions (`move`, `newGame`, `resetScore`, `setName`). Scores update inside the reducer at the moment a round ends, and the reducer rejects any move after that, so a round can only be scored once.
+## Game Logic
 
-## Deploy to Vercel
+The game logic is handled in `src/lib/game.ts` using a pure reducer, separate from the UI components. The `use-game` hook connects the reducer to the interface.
 
-No special configuration is needed; Vercel detects Next.js automatically.
+Game actions include `move`, `newGame`, `resetScore`, and `setName`. The reducer handles turn changes, win and draw detection, and score updates. It also prevents invalid moves and ensures that each completed round is counted only once.
 
-**Via Git (recommended)**
+## Deployment
 
-1. Push this folder to a GitHub repository.
-2. In Vercel, choose **Add New → Project**, import the repository, and click **Deploy**.
+The project can be deployed to Vercel without additional configuration since Next.js is automatically detected.
 
-**Via CLI**
+### Using GitHub
 
-```bash
-npm i -g vercel
-vercel          # preview deployment
-vercel --prod   # production deployment
-```
+1. Push the project to a GitHub repository.
+2. Open Vercel and select **Add New → Project**.
+3. Import your repository.
+4. Click **Deploy**.
+
+### Using Vercel CLI
+
+\`\`\`bash
+npm install -g vercel
+
+vercel          # Preview deployment
+vercel --prod   # Production deployment
+\`\`\`
