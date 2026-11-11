@@ -4,9 +4,9 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tic-Tac-Toe",
+  title: "Cloud & Sunshine Tic-Tac-Toe",
   description:
-    "A polished two-player Tic-Tac-Toe game with scoreboard, custom player names and a dark theme.",
+    "A playful two-player Tic-Tac-Toe game featuring cloud and sunshine characters.",
 };
 
 export const viewport: Viewport = {

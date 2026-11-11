@@ -1,4 +1,4 @@
-import type { CellValue, Player } from "@/lib/game";
+import { PLAYER_LABELS, type CellValue, type Player } from "@/lib/game";
 import { cn } from "@/lib/utils";
 import { PlayerMark } from "@/components/player-mark";
 
@@ -25,7 +25,7 @@ export function GameCell({
 }: GameCellProps) {
   const playable = value === null && !gameOver;
   const label = `${ROWS[Math.floor(index / 3)]}, ${COLS[index % 3]}: ${
-    value ?? "empty"
+    value ? PLAYER_LABELS[value] : "empty"
   }`;
 
   return (

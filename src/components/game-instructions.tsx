@@ -1,8 +1,8 @@
 import { Card } from "@/components/ui/card";
 
 const STEPS = [
-  "X always goes first. Players take turns placing their mark in an empty square.",
-  "Get three of your marks in a row — across, down, or diagonally — to win.",
+  "The cloud goes first. Take turns placing your character in an empty square.",
+  "Line up three of your characters — across, down, or diagonally — to win.",
   "If all nine squares fill up with no winner, the round is a draw.",
   "Start another round with New Game; scores are kept until you reset them.",
 ] as const;

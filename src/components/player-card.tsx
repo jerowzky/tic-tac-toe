@@ -3,6 +3,7 @@ import { Trophy } from "lucide-react";
 import {
   DEFAULT_NAMES,
   MAX_NAME_LENGTH,
+  PLAYER_LABELS,
   type Player,
 } from "@/lib/game";
 import { cn } from "@/lib/utils";
@@ -56,7 +57,7 @@ export function PlayerCard({
           <PlayerMark player={player} className="size-5" />
         </span>
         <Label htmlFor={inputId} className="sr-only">
-          {`Player ${player} name`}
+          {`${PLAYER_LABELS[player]} player's name`}
         </Label>
         <Input
           id={inputId}

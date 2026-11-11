@@ -4,10 +4,11 @@ A polished two-player Tic-Tac-Toe game built with **Next.js (App Router)**, **Re
 
 ## Features
 
-- 3×3 board, X goes first, occupied cells are rejected, moves are blocked after the game ends
+- 3×3 board with friendly cloud and sunshine characters; the cloud goes first
+- Occupied cells are rejected and moves are blocked after the game ends
 - All 8 winning lines detected; the 3 winning cells are highlighted and pulse; draws detected
-- Scoreboard with X wins, O wins and draws; the active player's card is highlighted
-- Editable player names (defaults: "Player X" / "Player O"), reflected in the status message
+- Scoreboard with cloud wins, sunshine wins and draws; the active player's card is highlighted
+- Editable player names (defaults: "Cloud" / "Sunshine"), reflected in the status message
 - **New Game** keeps scores; **Reset Score** asks for confirmation, then clears scores and the board
 - Dark theme by default with a light-theme toggle (saved in `localStorage`, no flash on load)
 - Responsive layout, keyboard support (Tab, arrow keys between cells, Enter/Space), ARIA labels and a live status region, `prefers-reduced-motion` respected

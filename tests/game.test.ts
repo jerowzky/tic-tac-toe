@@ -34,7 +34,7 @@ describe("win detection", () => {
         assert.deepEqual([...state.result.line], [...line]);
       }
       assert.equal(state.scores.X, 1);
-      assert.equal(getStatusMessage(state), "Player X Wins!");
+      assert.equal(getStatusMessage(state), "Cloud Wins!");
     });
   }
 
@@ -42,7 +42,7 @@ describe("win detection", () => {
     const state = run(moves(0, 3, 1, 4, 8, 5));
     assert.equal(state.result?.kind, "win");
     assert.equal(state.scores.O, 1);
-    assert.equal(getStatusMessage(state), "Player O Wins!");
+    assert.equal(getStatusMessage(state), "Sunshine Wins!");
   });
 });
 
@@ -66,10 +66,10 @@ describe("draw", () => {
 describe("turns and move validation", () => {
   it("alternates turns starting with X", () => {
     let state = createInitialState();
-    assert.equal(getStatusMessage(state), "Player X's Turn");
+    assert.equal(getStatusMessage(state), "Cloud's Turn");
     state = run(moves(4), state);
     assert.equal(state.board[4], "X");
-    assert.equal(getStatusMessage(state), "Player O's Turn");
+    assert.equal(getStatusMessage(state), "Sunshine's Turn");
     state = run(moves(0), state);
     assert.equal(state.board[0], "O");
     assert.equal(state.current, "X");
@@ -129,7 +129,7 @@ describe("controls", () => {
     let state = run([{ type: "setName", player: "X", name: "Ana" }]);
     assert.equal(getStatusMessage(state), "Ana's Turn");
     state = run([{ type: "setName", player: "X", name: "   " }], state);
-    assert.equal(getStatusMessage(state), "Player X's Turn");
+    assert.equal(getStatusMessage(state), "Cloud's Turn");
   });
 
   it("limits name length", () => {

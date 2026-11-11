@@ -40,7 +40,8 @@ export type GameAction =
   | { type: "resetScore" }
   | { type: "setName"; player: Player; name: string };
 
-export const DEFAULT_NAMES: PlayerNames = { X: "Player X", O: "Player O" };
+export const PLAYER_LABELS: PlayerNames = { X: "Cloud", O: "Sun" };
+export const DEFAULT_NAMES: PlayerNames = { X: "Cloud", O: "Sunshine" };
 export const MAX_NAME_LENGTH = 12;
 
 export const createEmptyBoard = (): Board => Array<CellValue>(9).fill(null);
